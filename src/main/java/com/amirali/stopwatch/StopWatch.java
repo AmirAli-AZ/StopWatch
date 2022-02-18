@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 public class StopWatch {
 
-    private long elapsedTime;
+    private long elapsedTime , startTime;
     private final StringProperty formattedTimeProperty = new SimpleStringProperty("00:00:000");
     private final BooleanProperty activeProperty = new SimpleBooleanProperty(false);
     private Timeline timeline;
@@ -19,7 +19,8 @@ public class StopWatch {
     }
 
     public StopWatch(Duration startTime) {
-        elapsedTime = (long) startTime.toMillis();
+        this.elapsedTime = (long) startTime.toMillis();
+        this.startTime = (long) startTime.toMillis();
     }
 
     public void start() {
@@ -43,7 +44,7 @@ public class StopWatch {
     public void reset() {
         if (timeline != null) {
             stop();
-            elapsedTime = 0;
+            elapsedTime = startTime;
             formattedTimeProperty.set("00:00:000");
         }
     }
