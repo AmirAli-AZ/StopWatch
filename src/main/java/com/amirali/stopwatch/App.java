@@ -15,6 +15,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         var fxmlLoader = new FXMLLoader(App.class.getResource("stopwatch-view.fxml"));
         var scene = new Scene(fxmlLoader.load(), 666, 440);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("themes/light-theme.css")).toExternalForm());
         stage.setTitle("StopWatch");
         stage.getIcons().addAll(
                new Image(Objects.requireNonNull(getClass().getResourceAsStream("icons/icon64.png"))),
